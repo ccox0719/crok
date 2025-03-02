@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crokinole Scoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            user-select: none;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+            background: #222;
+            color: white;
+            overflow: hidden;
+        }
+        .zone-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .zone {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.1s;
+            position: relative;
+            font-size: 5rem;
+            font-weight: bold;
+            border: 5px solid #8b5a2b; /* Dark wood border */
+        }
+        .add-top {
+            background: #deb887; /* Light wood */
+            background: linear-gradient(135deg, #f5deb3, #d2a679);
+            color: #3b2a1a; /* Dark brown for contrast */
+        }
+        .add-bottom {
+            background: #8b5a2b; /* Dark wood */
+            background: linear-gradient(135deg, #a0522d, #5a3c1b);
+            color: #ffffff; /* White font for contrast */
+        }
+        .subtract-top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25%;
+            height: 25%;
+            background: transparent;
+        }
+        .subtract-bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 25%;
+            height: 25%;
+            background: transparent;
+        }
+        .zone:active, .subtract-top-right:active, .subtract-bottom-left:active {
+            opacity: 0.7;
+        }
+        .upside-down {
+            transform: rotate(180deg);
+        }
+        /* Winning Animation */
+        .win-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+        .flash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            animation: flash-animation 1s infinite alternate;
+        }
+        @keyframes flash-animation {
+            0% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+        /* Winning Message Colors */
+        .win-white { 
+            background: #f5deb3; 
+            color: #3b2a1a; /* Dark brown text for readability */
+        }
+        .win-black { 
+            background: #8b5a2b; 
+            color: #ffffff; /* White text for contrast */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="zone-container">
+        <div class="zone add-top" id="addTop">
+            <div id="score1-display" class="upside-down">0</div>
+        </div>
+        <div class="zone add-bottom" id="addBottom">
+            <div id="score2-display">0</div>
+        </div>
+        <div class="subtract-top-right" id="subtractTopRight"></div>
+        <div class="subtract-bottom-left" id="subtractBottomLeft"></div>
+        <div class="win-message" id="winMessage"></div>
+        <div class="flash" id="flashEffect" style="display: none;"></div>
+    </div>
+
+    <script>
+        let score1 = 0;
+        let score2 = 0;
+        let gameOver = false;
+
+        const addTop = document.getElementById('addTop');
+        const addBottom = document.getElementById('addBottom');
+        const subtractTopRight = document.getElementById('subtractTopRight');
+        const subtractBottomLeft = document.getElementById('subtractBottomLeft');
+        const score1Display = document.getElementById('score1-display');
+        const score2Display = document.getElementById('score2-display');
+        const winMessage = document.getElementById('winMessage');
+        const flashEffect = document.getElementById('flashEffect');
+
+        function updateScores() {
+            score1Display.textContent = score1;
+            score2Display.textContent = score2;
+
+            if (score1 >= 100) declareWinner("White");
+            if (score2 >= 100) declareWinner("Black");
+        }
+
+        function declareWinner(winner) {
+            gameOver = true;
+            winMessage.textContent = `${winner} Wins!`;
+            winMessage.style.display = 'block';
+            flashEffect.style.display = 'block';
+
+            if (winner === "White") {
+                winMessage.classList.add("win-white");
+            } else {
+                winMessage.classList.add("win-black");
+            }
+        }
+
+        addTop.addEventListener('click', () => {
+            if (!gameOver) { score1 += 5; updateScores(); }
+        });
+        addBottom.addEventListener('click', () => {
+            if (!gameOver) { score2 += 5; updateScores(); }
+        });
+
+        subtractTopRight.addEventListener('click', () => {
+            if (!gameOver) { score1 = Math.max(0, score1 - 5); updateScores(); }
+        });
+        subtractBottomLeft.addEventListener('click', () => {
+            if (!gameOver) { score2 = Math.max(0, score2 - 5); updateScores(); }
+        });
+
+        updateScores();
+    </script>
+
+</body>
+</html>
