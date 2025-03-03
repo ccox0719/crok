@@ -29,7 +29,7 @@ body {
     position: relative;
     font-size: 5rem;
     font-weight: bold;
-    border: 5px solid #8b5a2b; /* Dark wood border */
+    border: 5px solid #3D2B1F; /* Dark wood border */
 }
 .score-display {
     width: 120px; /* Adjust size */
