@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
     <title>Crokinole Scoring</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,10 +13,10 @@
 
     <div class="zone-container">
         <div class="zone add-top" id="addTop">
-            <div id="score1-display" class="upside-down">0</div>
+            <div id="score1-display" class="score-display upside-down">0</div>
         </div>
         <div class="zone add-bottom" id="addBottom">
-            <div id="score2-display">0</div>
+            <div id="score2-display" class="score-display">0</div>
         </div>
         <div class="subtract-top-right" id="subtractTopRight"></div>
         <div class="subtract-bottom-left" id="subtractBottomLeft"></div>
