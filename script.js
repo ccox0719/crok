@@ -47,3 +47,8 @@ subtractBottomLeft.addEventListener('click', () => {
 });
 
 updateScores();
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        window.scrollTo(0, 1);
+    }, 100);
+});
