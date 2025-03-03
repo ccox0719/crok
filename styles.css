@@ -32,14 +32,13 @@ body {
     border: 5px solid #8b5a2b; /* Dark wood border */
 }
 .add-top {
-    background: #deb887; /* Light wood */
-    background: linear-gradient(135deg, #f5deb3, #d2a679);
-    color: #3b2a1a; /* Dark brown for contrast */
+    background: url('IMG_0333.jpeg') no-repeat center center/cover;
+    color: #3b2a1a; /* Dark brown text for contrast */
 }
+
 .add-bottom {
-    background: #8b5a2b; /* Dark wood */
-    background: linear-gradient(135deg, #a0522d, #5a3c1b);
-    color: #ffffff; /* White font for contrast */
+    background: url('IMG_0332.jpeg') no-repeat center center/cover;
+    color: #ffffff; /* White text for contrast */
 }
 .subtract-top-right {
     position: absolute;
