@@ -31,6 +31,18 @@ body {
     font-weight: bold;
     border: 5px solid #8b5a2b; /* Dark wood border */
 }
+.score-display {
+    width: 120px; /* Adjust size */
+    height: 120px; /* Makes it a perfect circle */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
+    border-radius: 50%; /* Ensures it's a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: white; /* White text for better visibility */
+}
 .add-top {
     background: url('IMG_0333.jpeg') no-repeat center center/cover;
     color: #3b2a1a; /* Dark brown text for contrast */
