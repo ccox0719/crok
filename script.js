@@ -23,14 +23,13 @@ function declareWinner(winner) {
     gameOver = true;
     winMessage.textContent = `${winner} Wins!`;
     winMessage.style.display = 'block';
-    winMessage.style.animation = 'none';  // Reset animation
-    void winMessage.offsetWidth; // Trigger reflow for restart
-    winMessage.style.animation = 'win-glow 1s ease-out';  // Apply new animation
 
     if (winner === "White") {
         winMessage.classList.add("win-white");
+        addBottom.classList.add("fire"); // The Black team’s side catches fire
     } else {
         winMessage.classList.add("win-black");
+        addTop.classList.add("fire"); // The White team’s side catches fire
     }
 }
 
